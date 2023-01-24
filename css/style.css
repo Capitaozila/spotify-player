@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika&display=swap");
+
+html {
+  overflow-y: hidden;
+}
+
+body {
+  background-image: linear-gradient(rgb(59, 88, 83), rgb(29, 40, 42));
+  font-size: 1.5em;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-family: "Signika";
+  font-weight: 900;
+  height: 100vh;
+}
+
+h4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+button {
+  background-color: inherit;
+  color: inherit;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#song-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+#progress-bar {
+  background-color: #8cabb2;
+  height: 5px;
+  width: 100%;
+  border-radius: 100px;
+  margin: 20px 0 20px 0;
+}
+
+#current-progress {
+  height: inherit;
+  background-color: white;
+  width: 50%;
+  border-radius: inherit;
+}
+
+#below-cover {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#song-name {
+  font-size: 1.4em;
+  font-weight: bolder;
+}
+
+/* classes */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.imagem {
+  width: 350px;
+  border-radius: 100%;
+}
+
+.imagem-container {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  width: 35px;
+  height: 35px;
+}
+
+.button-bigger {
+  width: 100px;
+  height: 100px;
+}
+
+.light-color {
+  color: #8cabb2;
+}
+
+/* Media Cares*/
+
+@media screen and (min-width: 767px) {
+  .container {
+    margin: 0 20%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .container {
+    margin: 0 10%;
+  }
+
+  .imagem {
+    width: 200px;
+  }
+
+  #song-name {
+    font-size: 1em;
+  }
+
+  #band-name {
+    font-size: 0.6em;
+  }
+}
