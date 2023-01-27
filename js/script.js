@@ -7,8 +7,15 @@ const song = document.getElementById("audio");
 const play = document.getElementById("play");
 
 function playSong() {
-	// play.querySelector(".d").classList.remove("")
-	song.play();
-};
+  play.querySelector(".bi").classList.remove("bi-play-circle");
+  play.querySelector(".bi").classList.add("bi-pause-circle");
+  song.play();
+}
+
+function pauseSong() {
+  play.querySelector(".bi").classList.remove("bi-play-circle");
+  play.querySelector(".bi").classList.add("bi-pause-circle");
+  song.play();
+}
 
 play.addEventListener("click", playSong);
