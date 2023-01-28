@@ -1,22 +1,25 @@
 const songName = document.getElementById("song-name");
 
 const isNotTheSameAnimore = {
-	songName : "It's Not The Same Anymore",
+	songName : "Its Not The Same Anymore",
 	artist : "Rex Orange County",
-	file : "rex-orange-county-its-not-the-same-anymore"
+	file : "musica-1"
 };
 
 const karma = {
 	songName : "Karma",
 	artist : "Taylor Swift",
-	file : "taylor-swift-karma"
+	file : "musica-2"
 };
 
 const untitled = {
 	songName : "untitled",
 	artist : "Rex Orange County",
-	file : "rex-orange-county-untitled"
+	file : "musica-3"
 };
+
+const playlist = [isNotTheSameAnimore, karma, untitled];
+let index = 0;
 
 // songName.innerText = "It's Not The Same Anymore";
 
@@ -24,7 +27,7 @@ const bandName = document.getElementById("band-name");
 
 // bandName.innerText = "Rex Orange County";
 
-const cover = document.getElementById("cover")
+const cover = document.getElementById("below-cover")
 
 const song = document.getElementById("audio");
 
@@ -54,5 +57,14 @@ function playPauseDecider() {
 		playSong();
 	}
 }
+
+function loadSong() {
+	cover.src = `../midia/${playlist[index].file}.jpg`;
+	song.src = `../midia/${playlist[index].file}.mp3`;
+	songName.innerText = playlist[index].songName;
+	bandName.innerText = playlist[index].artist;
+}
+
+loadSong();
 
 play.addEventListener("click", playPauseDecider);
