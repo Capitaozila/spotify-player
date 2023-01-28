@@ -33,6 +33,10 @@ const song = document.getElementById("audio");
 
 const play = document.getElementById("play");
 
+const next = document.getElementById("after");
+
+const previous = document.getElementById("before");
+
 let isPlaying = false;
 
 function playSong() {
@@ -64,6 +68,28 @@ function loadSong() {
   bandName.innerText = playlist[index].artist;
 }
 
+function previousSong() {
+  if (index === 0) {
+    index = playlist.length - 1;
+  } else {
+    index--;
+  }
+	loadSong();
+	playSong();
+}
+
+function nextSong() {
+	if (index === playlist.length - 1) {
+		index = 0;
+	} else {
+		index++;
+	}
+	loadSong();
+	playSong();
+}
+
 loadSong();
 
 play.addEventListener("click", playPauseDecider);
+previous.addEventListener("click", previousSong);
+next.addEventListener("click", nextSong);
