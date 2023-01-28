@@ -1,21 +1,21 @@
 const songName = document.getElementById("song-name");
 
 const isNotTheSameAnimore = {
-	songName : "Untitled",
-	artist : "Rex Orange County",
-	file : "musica-1",
+  songName: "Untitled",
+  artist: "Rex Orange County",
+  file: "musica-1",
 };
 
 const karma = {
-	songName : "Karma",
-	artist : "Taylor Swift",
-	file : "musica-2"
+  songName: "Karma",
+  artist: "Taylor Swift",
+  file: "musica-2",
 };
 
 const untitled = {
-	songName : "Its Not The Same Anymore",
-	artist : "Rex Orange County",
-	file : "musica-3"
+  songName: "Its Not The Same Anymore",
+  artist: "Rex Orange County",
+  file: "musica-3",
 };
 
 const playlist = [isNotTheSameAnimore, karma, untitled];
@@ -50,19 +50,18 @@ function pauseSong() {
 }
 
 function playPauseDecider() {
-	if (isPlaying === true) {
-		pauseSong();
-	}
-	else {
-		playSong();
-	}
+  if (isPlaying === true) {
+    pauseSong();
+  } else {
+    playSong();
+  }
 }
 
 function loadSong() {
-	cover.src = `../midia/${playlist[index].file}.jpg`;
-	song.src = `../midia/${playlist[index].file}.mp3`;
-	songName.innerText = playlist[index].songName;
-	bandName.innerText = playlist[index].artist;
+  cover.src = `../fotos/${playlist[index].file}.jpg`;
+  song.src = `../musicas/${playlist[index].file}.mp3`;
+  songName.innerText = playlist[index].songName;
+  bandName.innerText = playlist[index].artist;
 }
 
 loadSong();
