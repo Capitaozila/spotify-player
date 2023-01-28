@@ -1,9 +1,9 @@
 const songName = document.getElementById("song-name");
 
 const isNotTheSameAnimore = {
-	songName : "Its Not The Same Anymore",
+	songName : "Untitled",
 	artist : "Rex Orange County",
-	file : "musica-1"
+	file : "musica-1",
 };
 
 const karma = {
@@ -13,7 +13,7 @@ const karma = {
 };
 
 const untitled = {
-	songName : "untitled",
+	songName : "Its Not The Same Anymore",
 	artist : "Rex Orange County",
 	file : "musica-3"
 };
@@ -27,7 +27,7 @@ const bandName = document.getElementById("band-name");
 
 // bandName.innerText = "Rex Orange County";
 
-const cover = document.getElementById("below-cover")
+const cover = document.getElementById("below-cover");
 
 const song = document.getElementById("audio");
 
