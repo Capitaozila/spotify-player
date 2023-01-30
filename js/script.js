@@ -9,35 +9,27 @@ const isNotTheSameAnimore = {
 const karma = {
   songName: "Karma",
   artist: "Taylor Swift",
-  file: "musica-2"
+  file: "musica-3"
 };
 
 const untitled = {
   songName: "Its Not The Same Anymore",
   artist: "Rex Orange County",
-  file: "musica-3"
+  file: "musica-2"
 };
 
 const playlist = [isNotTheSameAnimore, karma, untitled];
 let index = 0;
 
-// songName.innerText = "It's Not The Same Anymore";
-
 const bandName = document.getElementById("band-name");
-
-// bandName.innerText = "Rex Orange County";
-
 const image = document.getElementById("imagem");
-
 const cover = document.getElementById("cover");
-
 const song = document.getElementById("audio");
-
 const play = document.getElementById("play");
-
 const next = document.getElementById("after");
-
 const previous = document.getElementById("before");
+const currentProgress = document.getElementById("current-progress");
+
 
 let isPlaying = false;
 
@@ -90,8 +82,14 @@ function nextSong() {
   playSong();
 }
 
+function updateProgressBar() {
+  const barWidth = (song.currentTime/song.duration) * 100;
+  currentProgress
+}
+
 loadSong();
 
 play.addEventListener("click", playPauseDecider);
 previous.addEventListener("click", previousSong);
 next.addEventListener("click", nextSong);
+song.addEventListener("timeupdate", updateProgressBar)
