@@ -29,7 +29,7 @@ const bandName = document.getElementById("band-name");
 
 const image = document.getElementById("imagem");
 
-const cover = document.getElementById("below-cover");
+const cover = document.getElementById("cover");
 
 const song = document.getElementById("audio");
 

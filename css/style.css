@@ -74,16 +74,17 @@ button:hover {
   font-weight: bolder;
 }
 
+#cover {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+}
+
 /* classes */
 
 .container {
   display: flex;
   flex-direction: column;
-}
-
-.imagem {
-  width: 350px;
-  border-radius: 100%;
 }
 
 .imagem-container {
