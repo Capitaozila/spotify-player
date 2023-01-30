@@ -84,7 +84,7 @@ function nextSong() {
 
 function updateProgressBar() {
   const barWidth = (song.currentTime/song.duration) * 100;
-  currentProgress
+  currentProgress.style.setProperty("--progress", `${barWidth}%`)
 }
 
 loadSong();
