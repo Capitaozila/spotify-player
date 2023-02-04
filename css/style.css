@@ -77,9 +77,10 @@ button:hover {
 }
 
 #cover {
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  border-radius: 100%;
+  background-size: cover;
 }
 
 /* classes */
@@ -92,6 +93,8 @@ button:hover {
 .imagem-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+
 }
 
 .buttons {
