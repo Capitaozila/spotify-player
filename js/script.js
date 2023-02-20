@@ -71,6 +71,8 @@ function previousSong() {
   playSong();
 }
 
+// função nova música
+
 function nextSong() {
   if (index === playlist.length - 1) {
     index = 0;
