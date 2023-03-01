@@ -1,22 +1,16 @@
 const songName = document.getElementById("song-name");
 
-const isNotTheSameAnimore = {
-  songName: "Untitled",
-  artist: "Rex Orange County",
-  file: "musica_1",
-};
+function createSong(name, artist, file) {
+  return {
+    songName: name,
+    artist: artist,
+    file: file,
+  };
+}
 
-const karma = {
-  songName: "Karma",
-  artist: "Taylor Swift",
-  file: "musica_2",
-};
-
-const untitled = {
-  songName: "I'ts Not The Same Anymore",
-  artist: "Rex Orange County",
-  file: "musica_3",
-};
+const isNotTheSameAnimore = createSong("Untitled", "Rex Orange County", "musica_1");
+const karma = createSong("Karma", "Taylor Swift", "musica_2");
+const untitled = createSong("I'ts Not The Same Anymore", "Rex Orange County", "musica_3");
 
 const playlist = [isNotTheSameAnimore, karma, untitled];
 let index = 0;
