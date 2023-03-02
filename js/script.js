@@ -12,7 +12,8 @@ const isNotTheSameAnimore = createSong("Untitled", "Rex Orange County", "musica_
 const karma = createSong("Karma", "Taylor Swift", "musica_2");
 const untitled = createSong("I'ts Not The Same Anymore", "Rex Orange County", "musica_3");
 
-const playlist = [isNotTheSameAnimore, karma, untitled];
+const originalPlaylist = [isNotTheSameAnimore, karma, untitled];
+let sortedPlaylist = [...originalPlaylist];
 let index = 0;
 
 const bandName = document.getElementById("band-name");
@@ -24,8 +25,10 @@ const next = document.getElementById("after");
 const previous = document.getElementById("before");
 const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
+const shuffleButton = document.getElementById("shuffle");
 
 let isPlaying = false;
+let isShuffle = false;
 
 function playSong() {
   play.querySelector(".bi").classList.remove("bi-play-circle");
@@ -50,15 +53,15 @@ function playPauseDecider() {
 }
 
 function loadSong() {
-  cover.src = `../fotos/${playlist[index].file}.jpg`;
-  song.src = `../musicas/${playlist[index].file}.mp3`;
-  songName.innerText = playlist[index].songName;
-  bandName.innerText = playlist[index].artist;
+  cover.src = `../fotos/${sortedPlaylist[index].file}.jpg`;
+  song.src = `../musicas/${sortedPlaylist[index].file}.mp3`;
+  songName.innerText = sortedPlaylist[index].songName;
+  bandName.innerText = sortedPlaylist[index].artist;
 }
 
 function previousSong() {
   if (index === 0) {
-    index = playlist.length - 1;
+    index = sortedPlaylist.length - 1;
   } else {
     index--;
   }
@@ -69,7 +72,7 @@ function previousSong() {
 // função nova música
 
 function nextSong() {
-  if (index === playlist.length - 1) {
+  if (index === sortedPlaylist.length - 1) {
     index = 0;
   } else {
     index++;
@@ -90,6 +93,24 @@ function jumpTo(e) {
   song.currentTime = jumpToTime;
 }
 
+function shuffleArray(preShuffleArray) {
+  let size = sortedPlaylist.length;
+  let currentIndex = size - 1;
+
+  while (currentIndex > 0) {
+    let randomIndex = Math.floor(Marh.random() * size);
+    let aux = preShuffleArray [currentIndex];
+  }
+}
+
+function shuffleButtonClicked() {
+  if (isShuffle == false) {
+    isShuffle = true;
+    shuffleArray();
+  }
+
+}
+
 loadSong();
 
 play.addEventListener("click", playPauseDecider);
@@ -97,3 +118,4 @@ previous.addEventListener("click", previousSong);
 next.addEventListener("click", nextSong);
 song.addEventListener("timeupdate", updateProgressBar);
 progressContainer.addEventListener("click", jumpTo);
+shuffleButton.addEventListener("click", shuffleButtonClicked);
