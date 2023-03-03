@@ -3,7 +3,7 @@
 html {
   overflow-y: hidden;
 }
-/* General */
+
 body {
   background-image: linear-gradient(rgb(58, 88, 83), rgb(29, 40, 42));
   color: white;
@@ -15,17 +15,6 @@ body {
   user-select: none;
 }
 
-/* Playlist title */
-#playlist-title {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  margin-top: 20px;
-  user-select: none;
-}
-
-/* Button */
 button {
   background-color: inherit;
   border: none;
@@ -36,7 +25,7 @@ button:hover {
   cursor: pointer;
 }
 
-/* Song Info */
+/* IDS */
 #song-info {
   display: flex;
   flex-direction: column;
@@ -44,7 +33,6 @@ button:hover {
   width: 100%;
 }
 
-/* Progress Bar */
 #progress-bar {
   background-color: #8cabb2;
   border-radius: 100px;
@@ -52,9 +40,17 @@ button:hover {
   width: 100%;
 }
 
+#playlist-title {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin-top: 20px;
+  user-select: none;
+}
+
 #progress-container {
   cursor: pointer;
-  padding-bottom: 1em;
 }
 
 #current-progress {
@@ -65,7 +61,6 @@ button:hover {
   width: var(--progress);
 }
 
-/* Below Cover */
 #below-cover {
   align-items: center;
   display: flex;
@@ -73,7 +68,6 @@ button:hover {
   justify-content: space-around;
 }
 
-/* Button Container */
 #button-container {
   align-items: center;
   display: flex;
@@ -81,19 +75,25 @@ button:hover {
   justify-content: space-around;
 }
 
-/* Song Name */
 #song-name {
   font-size: 1.4em;
   font-weight: bolder;
 }
 
-/* Cover */
 #cover {
   background-size: cover;
   border-radius: 100%;
   height: 300px;
   object-fit: cover;
   width: 300px;
+}
+
+#time-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.5em;
+  font-size: 0.6em;
 }
 
 /* classes */
