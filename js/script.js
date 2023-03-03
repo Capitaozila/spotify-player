@@ -13,14 +13,27 @@ const isNotTheSameAnimore = createSong(
   "Rex Orange County",
   "musica_1"
 );
+
 const karma = createSong("Karma", "Taylor Swift", "musica_2");
+
 const untitled = createSong(
   "I'ts Not The Same Anymore",
   "Rex Orange County",
   "musica_3"
 );
 
-const originalPlaylist = [isNotTheSameAnimore, karma, untitled];
+const literalMe = createSong("Literal Me", "B3AST", "musica_4");
+
+const snowfall = createSong("Snowfall", "Dreamscape", "musica_5");
+
+const originalPlaylist = [
+  isNotTheSameAnimore,
+  karma,
+  untitled,
+  literalMe,
+  snowfall,
+];
+
 let sortedPlaylist = [...originalPlaylist];
 let index = 0;
 
@@ -34,9 +47,11 @@ const previous = document.getElementById("before");
 const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
 const shuffleButton = document.getElementById("shuffle");
+const repeatButton = document.getElementById("repeat");
 
 let isPlaying = false;
 let isShuffle = false;
+let repeatOn = false;
 
 function playSong() {
   play.querySelector(".bi").classList.remove("bi-play-circle");
@@ -44,7 +59,6 @@ function playSong() {
   song.play();
   isPlaying = true;
 }
-
 function pauseSong() {
   play.querySelector(".bi").classList.add("bi-play-circle");
   play.querySelector(".bi").classList.remove("bi-pause-circle");
@@ -101,16 +115,12 @@ function jumpTo(e) {
   song.currentTime = jumpToTime;
 }
 
-function shuffleArray(preShuffleArray) {
-  let size = sortedPlaylist.length;
-  let currentIndex = size - 1;
-  while (currentIndex > 0) {
-    let randomIndex = Math.floor(Math.random() * size);
-    let aux = preShuffleArray[currentIndex];
-    preShuffleArray[currentIndex] = preShuffleArray[randomIndex];
-    preShuffleArray[randomIndex] = aux;
-    currentIndex -= 1;
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
+  return array;
 }
 
 function shuffleButtonClicked() {
@@ -125,11 +135,31 @@ function shuffleButtonClicked() {
   }
 }
 
+function repeatButtonClicked() {
+  if (!repeatOn) {
+    repeatOn = true;
+    repeatButton.classList.add("active");
+  } else {
+    repeatOn = false;
+    repeatButton.classList.remove("active");
+  }
+}
+
+function nextOrRepeat() {
+  if (repeatOn) {
+    playSong();
+  } else {
+    nextSong();
+  }
+}
+
 loadSong();
 
 play.addEventListener("click", playPauseDecider);
 previous.addEventListener("click", previousSong);
 next.addEventListener("click", nextSong);
 song.addEventListener("timeupdate", updateProgressBar);
+song.addEventListener("ended", nextOrRepeat);
 progressContainer.addEventListener("click", jumpTo);
 shuffleButton.addEventListener("click", shuffleButtonClicked);
+repeatButton.addEventListener("click", repeatButtonClicked);
