@@ -8,9 +8,17 @@ function createSong(name, artist, file) {
   };
 }
 
-const isNotTheSameAnimore = createSong("Untitled", "Rex Orange County", "musica_1");
+const isNotTheSameAnimore = createSong(
+  "Untitled",
+  "Rex Orange County",
+  "musica_1"
+);
 const karma = createSong("Karma", "Taylor Swift", "musica_2");
-const untitled = createSong("I'ts Not The Same Anymore", "Rex Orange County", "musica_3");
+const untitled = createSong(
+  "I'ts Not The Same Anymore",
+  "Rex Orange County",
+  "musica_3"
+);
 
 const originalPlaylist = [isNotTheSameAnimore, karma, untitled];
 let sortedPlaylist = [...originalPlaylist];
@@ -96,19 +104,25 @@ function jumpTo(e) {
 function shuffleArray(preShuffleArray) {
   let size = sortedPlaylist.length;
   let currentIndex = size - 1;
-
   while (currentIndex > 0) {
-    let randomIndex = Math.floor(Marh.random() * size);
-    let aux = preShuffleArray [currentIndex];
+    let randomIndex = Math.floor(Math.random() * size);
+    let aux = preShuffleArray[currentIndex];
+    preShuffleArray[currentIndex] = preShuffleArray[randomIndex];
+    preShuffleArray[randomIndex] = aux;
+    currentIndex -= 1;
   }
 }
 
 function shuffleButtonClicked() {
-  if (isShuffle == false) {
+  if (!isShuffle) {
     isShuffle = true;
-    shuffleArray();
+    shuffleArray(sortedPlaylist);
+    shuffleButton.classList.add("active");
+  } else {
+    isShuffle = false;
+    sortedPlaylist = [...originalPlaylist];
+    shuffleButton.classList.remove("active");
   }
-
 }
 
 loadSong();
