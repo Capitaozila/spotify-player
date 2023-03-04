@@ -1,30 +1,33 @@
 const songName = document.getElementById("song-name");
 
-function createSong(name, artist, file) {
+function createSong(name, artist, file, liked) {
   return {
     songName: name,
     artist: artist,
     file: file,
+    liked: liked,
   };
 }
 
 const isNotTheSameAnimore = createSong(
   "Untitled",
   "Rex Orange County",
-  "musica_1"
+  "musica_1",
+  true
 );
 
-const karma = createSong("Karma", "Taylor Swift", "musica_2");
+const karma = createSong("Karma", "Taylor Swift", "musica_2", false);
 
 const untitled = createSong(
   "I'ts Not The Same Anymore",
   "Rex Orange County",
-  "musica_3"
+  "musica_3",
+  false
 );
 
-const literalMe = createSong("Literal Me", "B3AST", "musica_4");
+const literalMe = createSong("Literal Me", "B3AST", "musica_4", false);
 
-const snowfall = createSong("Snowfall", "Dreamscape", "musica_5");
+const snowfall = createSong("Snowfall", "Dreamscape", "musica_5", true);
 
 const originalPlaylist = [
   isNotTheSameAnimore,
@@ -44,6 +47,7 @@ const song = document.getElementById("audio");
 const play = document.getElementById("play");
 const next = document.getElementById("after");
 const previous = document.getElementById("before");
+const likeButton = document.getElementById("like");
 const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
 const shuffleButton = document.getElementById("shuffle");
@@ -81,6 +85,8 @@ function loadSong() {
   song.src = `../musicas/${sortedPlaylist[index].file}.mp3`;
   songName.innerText = sortedPlaylist[index].songName;
   bandName.innerText = sortedPlaylist[index].artist;
+
+  likedButtonRender();
 }
 
 function previousSong() {
@@ -166,9 +172,31 @@ function toHoursMinutesSeconds(originalTime) {
   let minutes = Math.floor((originalTime - hours * 3600) / 60);
   let seconds = Math.floor(originalTime - hours * 3600 - minutes * 60);
 
-  return `${hours.toString().padStart(2, "0")}:${minutes
+  return `${minutes.toString().padStart(2, "0")}:${seconds
     .toString()
-    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    .padStart(2, "0")}`;
+}
+
+function likedButtonRender() {
+  if (sortedPlaylist[index].liked === true) {
+    likeButton.querySelector(".bi").classList.remove("bi-heart");
+    likeButton.querySelector(".bi").classList.add("bi-heart-fill");
+    likeButton.classList.add("active");
+  } else {
+    likeButton.querySelector(".bi").classList.add("bi-heart");
+    likeButton.querySelector(".bi").classList.remove("bi-heart-fill");
+    likeButton.classList.remove("active");
+  }
+}
+
+function likedButtonClicked() {
+  if (sortedPlaylist[index].liked === false) {
+    sortedPlaylist[index].liked = true;
+  } else {
+    sortedPlaylist[index].liked = false;
+  }
+
+  likedButtonRender();
 }
 
 loadSong();
@@ -182,3 +210,4 @@ song.addEventListener("loadedmetadata", updateTotalTime);
 progressContainer.addEventListener("click", jumpTo);
 shuffleButton.addEventListener("click", shuffleButtonClicked);
 repeatButton.addEventListener("click", repeatButtonClicked);
+likedButton.addEventListener("click", likedButtonClicked);
