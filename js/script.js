@@ -14,7 +14,7 @@ const untitled = createSong("I'ts Not The Same Anymore", "Rex Orange County", "m
 
 const literalMe = createSong("Literal Me", "B3AST", "musica_4", false);
 
-const snowfall = createSong("Snowfall", "Dreamscape", "musica_5", true);
+const snowfall = createSong("Snowfall", "Dreamscape", "musica_5", false);
 
 const originalPlaylist = [isNotTheSameAnimore, karma, untitled, literalMe, snowfall,];
 
@@ -27,7 +27,7 @@ const song = document.getElementById("audio");
 const play = document.getElementById("play");
 const next = document.getElementById("after");
 const previous = document.getElementById("before");
-
+const likedButton = document.getElementById("like");
 const currentProgress = document.getElementById("current-progress");
 const progressContainer = document.getElementById("progress-container");
 const shuffleButton = document.getElementById("shuffle");
@@ -61,12 +61,34 @@ function playPauseDecider() {
     }
 }
 
+function renderLikedButton() {
+    if (sortedPlaylist[index].liked === true) {
+        likedButton.querySelector(".bi").classList.remove("bi-heart");
+        likedButton.querySelector(".bi").classList.add("bi-heart-fill");
+        likedButton.classList.add("active");
+    } else {
+        likedButton.querySelector(".bi").classList.add("bi-heart");
+        likedButton.querySelector(".bi").classList.remove("bi-heart-fill");
+        likedButton.classList.remove("active");
+    }
+}
+
+function likeButtonClicked() {
+    if (sortedPlaylist[index].liked === false) {
+        sortedPlaylist[index].liked = true;
+        renderLikedButton();
+    } else {
+        sortedPlaylist[index].liked = false;
+        renderLikedButton();
+    }
+}
+
 function loadSong() {
     cover.src = `../fotos/${sortedPlaylist[index].file}.jpg`;
     song.src = `../musicas/${sortedPlaylist[index].file}.mp3`;
     songName.innerText = sortedPlaylist[index].songName;
     bandName.innerText = sortedPlaylist[index].artist;
-    // likedButtonRender();
+    renderLikedButton();
 }
 
 function previousSong() {
@@ -156,10 +178,6 @@ function toHoursMinutesSeconds(originalTime) {
         .padStart(2, "0")}`;
 }
 
-function renderLikedButton() {
-
-}
-
 loadSong();
 
 play.addEventListener("click", playPauseDecider);
@@ -171,3 +189,4 @@ song.addEventListener("loadedmetadata", updateTotalTime);
 progressContainer.addEventListener("click", jumpTo);
 shuffleButton.addEventListener("click", shuffleButtonClicked);
 repeatButton.addEventListener("click", repeatButtonClicked);
+likedButton.addEventListener("click", likeButtonClicked);
