@@ -16,7 +16,7 @@ const literalMe = createSong("Literal Me", "B3AST", "musica_4", false);
 
 const snowfall = createSong("Snowfall", "Dreamscape", "musica_5", false);
 
-const originalPlaylist = [isNotTheSameAnimore, karma, untitled, literalMe, snowfall,];
+const originalPlaylist = JSON.parse(localStorage.getItem("playlist")) ?? [isNotTheSameAnimore, karma, untitled, literalMe, snowfall];
 
 let sortedPlaylist = [...originalPlaylist];
 let index = 0;
@@ -76,11 +76,12 @@ function renderLikedButton() {
 function likeButtonClicked() {
     if (sortedPlaylist[index].liked === false) {
         sortedPlaylist[index].liked = true;
-        renderLikedButton();
     } else {
         sortedPlaylist[index].liked = false;
-        renderLikedButton();
     }
+    renderLikedButton();
+
+    localStorage.setItem("playlist", JSON.stringify(originalPlaylist));
 }
 
 function loadSong() {
