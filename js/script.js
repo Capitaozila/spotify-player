@@ -16,7 +16,7 @@ const literalMe = createSong("Literal Me", "B3AST", "musica_4", false);
 
 const snowfall = createSong("Snowfall", "Dreamscape", "musica_5", false);
 
-const originalPlaylist = JSON.parse(localStorage.getItem("playlist")) ?? [isNotTheSameAnimore, karma, untitled, literalMe, snowfall];
+const originalPlaylist = [isNotTheSameAnimore, karma, untitled, literalMe, snowfall];
 
 let sortedPlaylist = [...originalPlaylist];
 let index = 0;
